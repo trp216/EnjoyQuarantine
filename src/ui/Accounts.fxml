@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="797.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <TableView fx:id="table" prefHeight="425.0" prefWidth="821.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="column1" prefWidth="121.33337152004242" text="Username" />
+          <TableColumn fx:id="column2" prefWidth="138.0000228881836" text="Name" />
+            <TableColumn fx:id="column3" prefWidth="133.33331298828125" text="Password" />
+            <TableColumn fx:id="column4" prefWidth="127.33340454101562" text="Birthdate" />
+            <TableColumn fx:id="column5" prefWidth="101.33331298828125" text="Gender" />
+            <TableColumn fx:id="column6" prefWidth="91.33331298828125" text="Height" />
+            <TableColumn fx:id="column7" prefWidth="85.33331298828125" text="Weight" />
+        </columns>
+      </TableView>
+   </center>
+   <top>
+      <ChoiceBox fx:id="choicebox" prefWidth="150.0" BorderPane.alignment="CENTER" />
+   </top>
+</BorderPane>
