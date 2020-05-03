@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
 
-public class FreeController {
+public class FreeController implements AccountsControllerInterface{
 
     @FXML
     private MenuItem friends;
@@ -37,22 +37,22 @@ public class FreeController {
     }
 
     @FXML
-    void getHealthTip(ActionEvent event) {
+    public void getHealthTip(ActionEvent event) {
 
     }
 
     @FXML
-    void getMotivationalQuote(ActionEvent event) {
+    public void getMotivationalQuote(ActionEvent event) {
 
     }
 
     @FXML
-    void seeActivities(ActionEvent event) {
+    public void seeActivities(ActionEvent event) {
 
     }
 
     @FXML
-    void seeOtherAccounts(ActionEvent event) {
+    public void seeOtherAccounts(ActionEvent event) {
     	 try {
  			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accounts.fxml"));
  			Parent root = fxmlLoader.load();
@@ -70,6 +70,12 @@ public class FreeController {
 
 	public void setScene(Scene scene) {
 		this.scene = scene;
+		
+	}
+
+	@Override
+	public void addActivities(ActionEvent event) {
+		// TODO Auto-generated method stub
 		
 	}
 
