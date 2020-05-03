@@ -12,7 +12,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import model.EnjoyQuarantine;
 
@@ -36,9 +38,22 @@ public class LoginController {
     @FXML
     private Button btsignin;
     
+    @FXML
+    private RadioButton free;
+
+    @FXML
+    private ToggleGroup accountype;
+
+    @FXML
+    private RadioButton premium;
+    
     private Scene scene;
     
     private RegisterController rc;
+    
+    private FreeController fc;
+    
+    private PremiumController pc;
     
     private EnjoyQuarantine enjoyquarantine;
 
@@ -48,10 +63,7 @@ public class LoginController {
     
     @FXML
     public void signUp(MouseEvent event){
-    try {
-//			((Stage) scene.getWindow()).close();
-
-			
+    	try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Register.fxml"));
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();
@@ -60,11 +72,45 @@ public class LoginController {
 			rc.setScene(scene);
 			stage.setScene(scene);
 			stage.show();
-    }
-    catch(IOException io) {
-    	io.printStackTrace();
-    }
+    	}
+    	catch(IOException io) {
+    		io.printStackTrace();
+    	}
 		
+    }
+    
+    @FXML
+    public void signIn(ActionEvent event) {
+    	if(free.isSelected()) {
+    		try {
+    			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Free.fxml"));
+    			Parent root = fxmlLoader.load();
+    			Stage stage = new Stage();
+    			Scene scene = new Scene(root);
+    			fc = fxmlLoader.getController();
+    			fc.setScene(scene);
+    			stage.setScene(scene);
+    			stage.show();
+    		}
+    		catch(IOException io) {
+    			io.printStackTrace();
+    		}
+    	}
+    	else if(premium.isSelected()) {
+    		try {
+    			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Premium.fxml"));
+    			Parent root = fxmlLoader.load();
+    			Stage stage = new Stage();
+    			Scene scene = new Scene(root);
+    			pc = fxmlLoader.getController();
+    			pc.setScene(scene);
+    			stage.setScene(scene);
+    			stage.show();
+    		}
+    		catch(IOException io) {
+    			io.printStackTrace();
+    		}
+    	}
     }
 
 	@FXML

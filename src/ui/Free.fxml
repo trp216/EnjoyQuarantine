@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FreeController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="See Accounts">
+            <items>
+              <MenuItem fx:id="friends" mnemonicParsing="false" onAction="#seeOtherAccounts" text="Friends" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Activities">
+            <items>
+              <MenuItem fx:id="addActivity" mnemonicParsing="false" onAction="#addActivity" text="Add Activities" />
+                  <MenuItem fx:id="seeActivity" mnemonicParsing="false" onAction="#seeActivities" text="See Activities" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Cheer Me Up!">
+            <items>
+                  <MenuItem fx:id="health" mnemonicParsing="false" onAction="#getHealthTip" text="Health Tip" />
+              <MenuItem fx:id="motquote" mnemonicParsing="false" onAction="#getMotivationalQuote" text="Motivational Quote " />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
