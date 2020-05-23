@@ -1,8 +1,11 @@
 package ui;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.AudioSystem;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import model.EnjoyQuarantine;
+import thread.MusicThread;
 
 public class LoginController {
 
@@ -112,9 +116,20 @@ public class LoginController {
     		}
     	}
     }
+    
+    public void testPlay() {
+		try {
+			MusicThread sound = new MusicThread(
+					AudioSystem.getAudioInputStream(new BufferedInputStream(getClass()
+							.getResourceAsStream("mix.wav"))));
+			sound.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	@FXML
     void initialize() {
-
+		testPlay();
     }
 }

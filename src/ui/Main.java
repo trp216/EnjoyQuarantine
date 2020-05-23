@@ -9,6 +9,11 @@ import model.EnjoyQuarantine;
 
 public class Main extends Application {
 	
+	//Note: because github can't store files larger than 100MB you will have to download the .wav file 
+	//of this google drive: https://drive.google.com/drive/folders/1EfM0HRBTk68ZoS6PQ3zeq26TMqlPDrCh?usp=sharing
+	//and paste it into ui folder.
+	//Thanks
+	
 	private LoginController lc;
 	private EnjoyQuarantine enjoyquarantine;
 	
