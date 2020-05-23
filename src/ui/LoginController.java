@@ -68,6 +68,8 @@ public class LoginController {
     @FXML
     public void signUp(MouseEvent event){
     	try {
+    		rc = new RegisterController();
+    		rc.getEQ(enjoyquarantine);
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Register.fxml"));
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();

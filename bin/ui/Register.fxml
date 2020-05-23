@@ -23,7 +23,7 @@
       <Text layoutX="290.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Height (cm)" />
       <Text layoutX="291.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight (kg)" />
       <TextField fx:id="txfname" layoutX="83.0" layoutY="113.0" />
-      <Button fx:id="btregister" layoutX="217.0" layoutY="459.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="81.0" text="Register" />
+      <Button fx:id="btregister" layoutX="217.0" layoutY="459.0" mnemonicParsing="false" onAction="#register" prefHeight="43.0" prefWidth="81.0" style="-fx-background-color: #2402ff;" text="Register" textFill="WHITE" />
       <Line endX="276.6666564941406" layoutX="170.0" layoutY="63.0" startX="-100.0" stroke="#2402ff" />
       <Text layoutX="197.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" wrappingWidth="121.36399841308594">
          <font>

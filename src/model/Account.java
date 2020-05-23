@@ -7,11 +7,11 @@ public abstract class Account {
 	private String password;
 	private String birthdate;
 	private String gender;
-	private int height;
-	private int weight;
+	private double height;
+	private double weight;
 	
-	public Account(String username, String name, String password, String birthdate, String gender, int height,
-			int weight) {
+	public Account(String username, String name, String password, String birthdate, String gender, double height,
+			double weight) {
 		this.username = username;
 		this.name = name;
 		this.password = password;
@@ -61,19 +61,19 @@ public abstract class Account {
 		this.gender = gender;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 

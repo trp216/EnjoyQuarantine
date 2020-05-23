@@ -27,16 +27,16 @@
       <Text layoutX="90.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <TextField fx:id="txfuser" layoutX="91.0" layoutY="158.0" prefHeight="26.0" prefWidth="214.0" />
       <PasswordField fx:id="pfpass" layoutX="91.0" layoutY="231.0" prefHeight="26.0" prefWidth="214.0" />
-      <Button fx:id="btcancel" layoutX="83.0" layoutY="374.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" text="CANCEL">
+      <Button fx:id="btcancel" layoutX="83.0" layoutY="374.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="74.0" style="-fx-background-color: #2402ff;" text="CANCEL" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btsignin" layoutX="231.0" layoutY="374.0" mnemonicParsing="false" onAction="#signIn" prefHeight="45.0" prefWidth="74.0" text="SIGN IN">
+      <Button fx:id="btsignin" layoutX="231.0" layoutY="374.0" mnemonicParsing="false" onAction="#signIn" prefHeight="45.0" prefWidth="74.0" style="-fx-background-color: #2402ff;" text="SIGN IN" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="12.0" />
          </font></Button>
-      <Text fill="#3c6ffa" layoutX="90.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
+      <Text fill="#3c6ffa" layoutX="90.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password?" underline="true">
          <font>
             <Font size="11.0" />
          </font>

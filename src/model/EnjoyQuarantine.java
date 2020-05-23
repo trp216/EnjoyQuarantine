@@ -14,8 +14,8 @@ public class EnjoyQuarantine {
 		accounts = new ArrayList<Account>();
 	}
 
-	public void addAccount(String username, String name, String password, String birthdate, String gender, int height,
-			int weight, boolean isPremium) {
+	public void addAccount(String username, String name, String password, String birthdate, String gender, double height,
+			double weight, boolean isPremium) {
 		
 		if(isPremium==true) {
 			accounts.add(new PremiumAccount(username, name, password, birthdate, gender, height, weight));
