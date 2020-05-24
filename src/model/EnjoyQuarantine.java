@@ -15,8 +15,10 @@ public class EnjoyQuarantine {
 	
 	private HealthTip rootht;
 	
-	public EnjoyQuarantine() {
+	public EnjoyQuarantine() throws IOException {
 		accounts = new ArrayList<Account>();
+		loadInfoHealthTips();
+		loadInfoMotivationalQuotes();
 	}
 	
 	
@@ -53,6 +55,22 @@ public class EnjoyQuarantine {
 
 	public void setRootmq(MotivationalQuote rootmq) {
 		this.rootmq = rootmq;
+	}
+	
+	public void addActivity(String text) {
+		Activity toAdd = new Activity();
+		toAdd.setText(text);
+		if(activities==null) {
+			activities = toAdd;
+		}
+		else {
+			Activity aux = activities;
+			while(aux.getNext()!=null) {
+				aux = aux.getNext();
+			}
+			aux.setNext(toAdd);
+			toAdd.setPrev(aux);
+		}
 	}
 
 	public void loadInfoHealthTips() throws IOException{

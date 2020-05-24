@@ -1,5 +1,7 @@
 package ui;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,7 +19,7 @@ public class Main extends Application {
 	private LoginController lc;
 	private EnjoyQuarantine enjoyquarantine;
 	
-	public Main() {
+	public Main() throws IOException {
 		enjoyquarantine = new EnjoyQuarantine();
 		lc = new LoginController(enjoyquarantine);
 	}

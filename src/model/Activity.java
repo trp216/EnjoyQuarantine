@@ -3,6 +3,8 @@ package model;
 public class Activity {
 	
 	private Activity prev, next;
+	
+	private String text;
 
 	public Activity getPrev() {
 		return prev;
@@ -18,6 +20,14 @@ public class Activity {
 
 	public void setNext(Activity next) {
 		this.next = next;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
 	}
 	
 	

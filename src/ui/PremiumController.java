@@ -1,6 +1,7 @@
 package ui;
 
 import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 
 import java.io.IOException;
@@ -8,8 +9,11 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import model.Activity;
 import model.EnjoyQuarantine;
 
 public class PremiumController implements AccountsControllerInterface{
@@ -33,6 +37,12 @@ public class PremiumController implements AccountsControllerInterface{
     @FXML
     private MenuItem health;
     
+    @FXML
+    private TextArea textarea;
+    
+    @FXML
+    private Button btadd;
+    
     private EnjoyQuarantine eq;
 	
 	public void getEQ(EnjoyQuarantine eq) {
@@ -42,12 +52,22 @@ public class PremiumController implements AccountsControllerInterface{
 	public void setScene(Scene scene) {
 		this.scene = scene;
 	}
-
-    @FXML
-    public void addActivities(ActionEvent event) {
-
+	
+	@FXML
+    void addActivity(ActionEvent event) {
+    	textarea.setEditable(true);
+    	btadd.setVisible(true);
     }
 
+	@Override
+	public void addActivities(ActionEvent event) {
+		eq.addActivity(textarea.getText());
+	}
+	
+	@FXML
+    void initialize() {
+		btadd.setVisible(false);
+    }
     @FXML
     public void getHealthTip(ActionEvent event) {
 
@@ -60,7 +80,18 @@ public class PremiumController implements AccountsControllerInterface{
 
     @FXML
    public  void seeActivities(ActionEvent event) {
-
+    	Activity aux = eq.getActivities();
+    	String text = "";
+    	if(aux!=null) {
+    		while(aux.getNext()!=null) {
+    			text += aux.getText()+"\n";
+    			aux = aux.getNext();
+    		}
+    	}
+    	else {
+    		text = "No activities added yet";
+    	}
+    	textarea.setText(text);
     }
 
     @FXML

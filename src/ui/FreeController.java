@@ -7,8 +7,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import model.Activity;
 import model.EnjoyQuarantine;
 
 public class FreeController implements AccountsControllerInterface{
@@ -27,6 +30,12 @@ public class FreeController implements AccountsControllerInterface{
 
     @FXML
     private MenuItem motquote;
+    
+    @FXML
+    private TextArea textarea;
+    
+    @FXML
+    private Button btadd;
 
     private Scene scene;
     
@@ -40,7 +49,8 @@ public class FreeController implements AccountsControllerInterface{
     
     @FXML
     void addActivity(ActionEvent event) {
-
+    	textarea.setEditable(true);
+    	btadd.setVisible(true);
     }
 
     @FXML
@@ -55,7 +65,18 @@ public class FreeController implements AccountsControllerInterface{
 
     @FXML
     public void seeActivities(ActionEvent event) {
-
+    	Activity aux = eq.getActivities();
+    	String text = "";
+    	if(aux!=null) {
+    		while(aux.getNext()!=null) {
+    			text += aux.getText()+"\n";
+    			aux = aux.getNext();
+    		}
+    	}
+    	else {
+    		text = "No activities added yet";
+    	}
+    	textarea.setText(text);
     }
 
     @FXML
@@ -83,8 +104,12 @@ public class FreeController implements AccountsControllerInterface{
 
 	@Override
 	public void addActivities(ActionEvent event) {
-		// TODO Auto-generated method stub
-		
+		eq.addActivity(textarea.getText());
 	}
+	
+	@FXML
+    void initialize() {
+		btadd.setVisible(false);
+    }
 
 }
