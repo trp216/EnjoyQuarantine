@@ -101,17 +101,13 @@ public class EnjoyQuarantine {
 		        }
 		        else{
 		             if(current.getRight() == null){
-		                current.setRight(newmq);
+		                current.setRight(newht);
 		             }
 		             else{
-		            	 addMotivationalQuote1(current.getRight(),newmq);
+		            	 addHealthTip1(current.getRight(),newht);
 		             }
 		        }
 		    }
-	
-	
-	
-	
 	
 	
 
