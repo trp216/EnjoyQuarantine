@@ -1,5 +1,8 @@
 package model;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EnjoyQuarantine {
@@ -9,6 +12,8 @@ public class EnjoyQuarantine {
 	private Activity activities;
 	
 	private MotivationalQuote rootmq;
+	
+	private HealthTip rootht;
 	
 	public EnjoyQuarantine() {
 		accounts = new ArrayList<Account>();
@@ -50,7 +55,65 @@ public class EnjoyQuarantine {
 		this.rootmq = rootmq;
 	}
 
-
+	public void loadInfoHealthTips() throws IOException{
+		FileReader fr = new FileReader("data/health-tips.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String l = br.readLine();
+		String[] line = l.split(";");
+		br.close();
+		for(int i = 0; i<line.length;i++) {
+			addHealthTip(line[i]);
+		}
+	}
+	
+	 public void addHealthTip(String text){
+		  HealthTip act = new HealthTip();
+		  act.setText(text);
+		        if(rootht==null){
+		        rootht=act;
+		        }
+		        else{
+		        	if(rootht.getText().compareTo(act.getText())<0){
+		        		if(rootht.getLeft()==null)
+		        			rootht.setLeft(act);
+		        		else {
+		        			addHealthTip1(rootht.getLeft(),act);
+		        		}
+		            }
+		            else{
+		            	if(rootht.getRight()==null)
+		        			rootht.setRight(act);
+		        		else {
+		        			addHealthTip1(rootht.getRight(),act);
+		        		}
+		            }
+		        }
+		    }
+		    
+		    private void addHealthTip1(HealthTip current,HealthTip newht){
+		            if(newht.getText().compareTo(current.getText()) <= 0){
+		             if(current.getLeft() == null){
+		                current.setLeft(newht);
+		             }
+		             else{
+		            	 addHealthTip1(current.getLeft(),newht);
+		             }
+		        }
+		        else{
+		             if(current.getRight() == null){
+		                current.setRight(newmq);
+		             }
+		             else{
+		            	 addMotivationalQuote1(current.getRight(),newmq);
+		             }
+		        }
+		    }
+	
+	
+	
+	
+	
+	
 
 	public void addAccount(String username, String name, String password, String birthdate, String gender, double height,
 			double weight, boolean isPremium) {
@@ -60,6 +123,18 @@ public class EnjoyQuarantine {
 		}
 		else {
 			accounts.add(new FreeAccount(username, name, password, birthdate, gender, height, weight));
+		}
+	}
+	
+	
+	public void loadInfoMotivationalQuotes() throws IOException{
+		FileReader fr = new FileReader("data/motivational-quotes.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String l = br.readLine();
+		String[] line = l.split(";");
+		br.close();
+		for(int i = 0; i<line.length;i++) {
+			addMotivationalQuote(line[i]);
 		}
 	}
 	

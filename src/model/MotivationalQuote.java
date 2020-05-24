@@ -8,7 +8,6 @@ public class MotivationalQuote extends CheerUser{
 	
 	
 	public MotivationalQuote() {
-	//	setPath();
 	}
 
 	public MotivationalQuote getLeft() {
