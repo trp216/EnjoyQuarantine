@@ -59,7 +59,7 @@ public class FreeController implements AccountsControllerInterface{
     @FXML
     public void getHealthTip(ActionEvent event) {
     	ArrayList<HealthTip> ar = new ArrayList<HealthTip>();
-    	eq.getRandomHT(eq.getRootHT(), ar, 0);
+    	ar = eq.getRandomHT(eq.getRootHT(), ar, 0);
     	int random = (int)(Math.random() * ar.size() + 1);
     	textarea.setText(ar.get(random).getText());
     }
@@ -67,7 +67,7 @@ public class FreeController implements AccountsControllerInterface{
     @FXML
     public void getMotivationalQuote(ActionEvent event) {
     	ArrayList<MotivationalQuote> ar = new ArrayList<MotivationalQuote>();
-    	eq.getRandomMQ(eq.getRootmq(), ar, 0);
+    	ar = eq.getRandomMQ(eq.getRootmq(), ar, 0);
     	int random = (int)(Math.random() * ar.size() + 1);
     	textarea.setText(ar.get(random).getText());
     }

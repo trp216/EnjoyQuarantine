@@ -28,6 +28,12 @@
                   <MenuItem fx:id="health" mnemonicParsing="false" onAction="#getHealthTip" text="Health Tip" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Clock">
+              <items>
+                <MenuItem fx:id="seeclock" mnemonicParsing="false" onAction="#clock" text="See Clock" />
+                  <MenuItem fx:id="stopclock" mnemonicParsing="false" onAction="#stopClock" text="Stop Clock" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
