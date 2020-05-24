@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import model.Activity;
 import model.EnjoyQuarantine;
+import model.HealthTip;
+import model.MotivationalQuote;
 
 public class PremiumController implements AccountsControllerInterface{
 	
@@ -62,21 +65,29 @@ public class PremiumController implements AccountsControllerInterface{
 	@Override
 	public void addActivities(ActionEvent event) {
 		eq.addActivity(textarea.getText());
+		textarea.setEditable(false);
 	}
 	
 	@FXML
     void initialize() {
 		btadd.setVisible(false);
     }
-    @FXML
-    public void getHealthTip(ActionEvent event) {
+  
+	 @FXML
+	 public void getHealthTip(ActionEvent event) {
+	   ArrayList<HealthTip> ar = new ArrayList<HealthTip>();
+	   eq.getRandomHT(eq.getRootHT(), ar, 0);
+	   int random = (int)(Math.random() * ar.size() + 1);
+	   textarea.setText(ar.get(random).getText());
+	 }
 
-    }
-
-    @FXML
-    public void getMotivationalQuote(ActionEvent event) {
-
-    }
+	 @FXML
+	 public void getMotivationalQuote(ActionEvent event) {
+	   ArrayList<MotivationalQuote> ar = new ArrayList<MotivationalQuote>();
+	   eq.getRandomMQ(eq.getRootmq(), ar, 0);
+	   int random = (int)(Math.random() * ar.size() + 1);
+	   textarea.setText(ar.get(random).getText());
+	 }
 
     @FXML
    public  void seeActivities(ActionEvent event) {

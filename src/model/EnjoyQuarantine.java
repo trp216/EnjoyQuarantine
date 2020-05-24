@@ -270,4 +270,27 @@ public class EnjoyQuarantine {
 			}
 		}
 	}
+	
+	public ArrayList<MotivationalQuote> getRandomMQ(MotivationalQuote m,ArrayList<MotivationalQuote> ar,int i) {
+		if(m!=null) {
+			getRandomMQ(m.getLeft(),ar,i);
+			ar.set(i, m);
+			getRandomMQ(m.getRight(),ar,i+1);
+		}
+		return ar;
+	}
+
+	public ArrayList<HealthTip> getRandomHT(HealthTip h,ArrayList<HealthTip> ar,int i) {
+		if(h!=null) {
+			getRandomHT(h.getLeft(),ar,i);
+			ar.set(i, h);
+			getRandomHT(h.getRight(),ar,i+1);
+		}
+		return ar;
+	}
+
+
+	public HealthTip getRootHT() {
+		return rootht;
+	}
 }
