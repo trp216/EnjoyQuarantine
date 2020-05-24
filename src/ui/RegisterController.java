@@ -90,6 +90,11 @@ import model.EnjoyQuarantine;
 			
 		}
 		
+		public void getFP(FreeController fc, PremiumController pc) {
+			this.fc = fc;
+			this.pc = pc;
+		}
+		
 		@FXML
 		public void register(ActionEvent event) {
 			
@@ -197,6 +202,7 @@ import model.EnjoyQuarantine;
 		
 		public void registerAsFree() {
 			try {
+				fc.getEQ(eq);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Free.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();
@@ -213,6 +219,7 @@ import model.EnjoyQuarantine;
 		
 		public void registerAsPremium() {
 			try {
+				pc.getEQ(eq);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Premium.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();

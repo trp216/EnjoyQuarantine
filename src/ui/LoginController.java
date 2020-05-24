@@ -70,6 +70,7 @@ public class LoginController {
     	try {
     		rc = new RegisterController();
     		rc.getEQ(enjoyquarantine);
+    		rc.getFP(fc, pc);
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Register.fxml"));
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();
@@ -89,6 +90,8 @@ public class LoginController {
     public void signIn(ActionEvent event) {
     	if(free.isSelected()) {
     		try {
+    			fc = new FreeController();
+    			fc.getEQ(enjoyquarantine);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Free.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();
@@ -104,6 +107,8 @@ public class LoginController {
     	}
     	else if(premium.isSelected()) {
     		try {
+    			pc = new PremiumController();
+    			pc.getEQ(enjoyquarantine);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Premium.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();

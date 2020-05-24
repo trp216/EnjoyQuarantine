@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import model.EnjoyQuarantine;
 
 public class FreeController implements AccountsControllerInterface{
 
@@ -31,6 +32,12 @@ public class FreeController implements AccountsControllerInterface{
     
     private AccountController ac;
 
+    private EnjoyQuarantine eq;
+	
+	public void getEQ(EnjoyQuarantine eq) {
+		this.eq = eq;
+	}
+    
     @FXML
     void addActivity(ActionEvent event) {
 
@@ -54,6 +61,7 @@ public class FreeController implements AccountsControllerInterface{
     @FXML
     public void seeOtherAccounts(ActionEvent event) {
     	 try {
+    		 ac.getEQ(eq);
  			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accounts.fxml"));
  			Parent root = fxmlLoader.load();
  			Stage stage = new Stage();

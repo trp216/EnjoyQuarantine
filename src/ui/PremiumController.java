@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
+import model.EnjoyQuarantine;
 
 public class PremiumController implements AccountsControllerInterface{
 	
@@ -31,6 +32,12 @@ public class PremiumController implements AccountsControllerInterface{
 
     @FXML
     private MenuItem health;
+    
+    private EnjoyQuarantine eq;
+	
+	public void getEQ(EnjoyQuarantine eq) {
+		this.eq = eq;
+	}
     
 	public void setScene(Scene scene) {
 		this.scene = scene;
