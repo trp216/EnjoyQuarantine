@@ -134,6 +134,14 @@ public class LoginController {
 			e.printStackTrace();
 		}
 	}
+    
+    @FXML
+    private void closeButtonAction(ActionEvent event){
+        // get a handle to the stage
+        Stage stage = (Stage) btcancel.getScene().getWindow();
+        // do what you have to do
+        stage.close();
+    }
 
 	@FXML
     void initialize() {

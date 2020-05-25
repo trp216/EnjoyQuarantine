@@ -175,14 +175,14 @@ public class AccountController {
 		if(found==true) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 		    alert.setTitle("Search complete");
-		    alert.setContentText("The search user exists in the database");
+		    alert.setContentText("The wanted user exists in the database");
 		
 		    alert.showAndWait();
 		}
 		else {
 			Alert alert = new Alert(AlertType.INFORMATION);		   
 			alert.setTitle("Search complete");
-		    alert.setContentText("The search user doesn't exist in the database");
+		    alert.setContentText("The wanted user doesn't exist in the database");
 		
 		    alert.showAndWait();
 		}

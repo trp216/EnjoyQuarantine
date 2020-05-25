@@ -13,7 +13,8 @@ public class ReminderThread extends Thread {
 	
 	public ReminderThread(Reminder r, FreeController freegui, int maxmin) {
 		this.r = r;
-		this.freegui = freegui;;
+		this.freegui = freegui;
+		this.maxmin = maxmin;
 		setDaemon(true);
 	}
 
