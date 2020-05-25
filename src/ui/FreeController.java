@@ -114,7 +114,8 @@ public class FreeController implements AccountsControllerInterface{
     @FXML
     public void seeOtherAccounts(ActionEvent event) {
     	 try {
-    		 ac.getEQ(eq);
+    		ac = new AccountController();
+    		ac.getEQ(eq);
  			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accounts.fxml"));
  			Parent root = fxmlLoader.load();
  			Stage stage = new Stage();
@@ -193,6 +194,13 @@ public class FreeController implements AccountsControllerInterface{
 	
 	@FXML
     void initialize() {
+		try {
+			eq = new EnjoyQuarantine();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		btadd.setVisible(false);
 
     	btaddR.setVisible(false);

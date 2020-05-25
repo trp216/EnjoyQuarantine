@@ -21,7 +21,8 @@ public class Main extends Application {
 	
 	public Main() throws IOException, ClassNotFoundException {
 		enjoyquarantine = new EnjoyQuarantine();
-		lc = new LoginController(enjoyquarantine);
+		lc = new LoginController();
+		lc.getEq(enjoyquarantine);
 	}
 
 	@Override

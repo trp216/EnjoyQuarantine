@@ -5,8 +5,10 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FreeController">
    <top>
@@ -31,7 +33,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Reminders">
               <items>
-                <MenuItem fx:id="addreminder" mnemonicParsing="false" onAction="#addReminder" text="AddReminder" />
+                <MenuItem fx:id="addreminder" mnemonicParsing="false" onAction="#addReminder" text="Add Reminder" />
               </items>
             </Menu>
         </menus>
@@ -43,8 +45,11 @@
    <bottom>
       <Pane prefHeight="31.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btadd" layoutX="246.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addActivities" style="-fx-background-color: #2402ff;" text="Add" />
-            <Button fx:id="btaddR" layoutX="300.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addReminderB" style="-fx-background-color: #2402ff;" text="Add" />
+            <Button fx:id="btadd" layoutX="246.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addActivities" style="-fx-background-color: #2402ff;" text="Add" textFill="WHITE" />
+            <Button fx:id="btaddR" layoutX="300.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addReminderB" style="-fx-background-color: #2402ff;" text="Add" textFill="WHITE" />
+            <Text fx:id="t1" layoutX="1.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remind me in:" />
+            <TextField fx:id="tfmin" layoutX="92.0" layoutY="1.0" prefHeight="26.0" prefWidth="34.0" />
+            <Text fx:id="t2" layoutX="135.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" />
          </children>
       </Pane>
    </bottom>

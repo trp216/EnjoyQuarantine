@@ -202,7 +202,7 @@ import model.EnjoyQuarantine;
 		
 		public void registerAsFree() {
 			try {
-				fc.getEQ(eq);
+				//fc.getEQ(eq);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Free.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();
@@ -233,4 +233,14 @@ import model.EnjoyQuarantine;
     			io.printStackTrace();
     		}
 		}
+		
+		@FXML
+	    void initialize() {
+			try {
+				eq = new EnjoyQuarantine();
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    }
 }

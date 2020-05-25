@@ -61,7 +61,7 @@ public class LoginController {
     
     private EnjoyQuarantine enjoyquarantine;
 
-    public LoginController(EnjoyQuarantine enjoyquarantine) {
+    public void getEq(EnjoyQuarantine enjoyquarantine) {
 		this.enjoyquarantine = enjoyquarantine;
 	}
     
@@ -129,6 +129,7 @@ public class LoginController {
 			MusicThread sound = new MusicThread(
 					AudioSystem.getAudioInputStream(new BufferedInputStream(getClass()
 							.getResourceAsStream("mix.wav"))));
+			sound.setDaemon(true);
 			sound.start();
 		} catch (Exception e) {
 			e.printStackTrace();

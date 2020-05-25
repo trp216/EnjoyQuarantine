@@ -1,6 +1,7 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,7 +29,7 @@ public class EnjoyQuarantine {
 		accounts = new ArrayList<Account>();
 		loadInfoHealthTips();
 		loadInfoMotivationalQuotes();
-		loadAccounts();
+		//loadAccounts();
 	}
 	
 	
@@ -288,7 +289,7 @@ public class EnjoyQuarantine {
 	public ArrayList<MotivationalQuote> getRandomMQ(MotivationalQuote m,ArrayList<MotivationalQuote> ar,int i) {
 		if(m!=null) {
 			getRandomMQ(m.getLeft(),ar,i);
-			ar.set(i, m);
+			ar.add(m);
 			getRandomMQ(m.getRight(),ar,i+1);
 		}
 		return ar;
@@ -298,7 +299,7 @@ public class EnjoyQuarantine {
 	public ArrayList<HealthTip> getRandomHT(HealthTip h,ArrayList<HealthTip> ar,int i) {
 		if(h!=null) {
 			getRandomHT(h.getLeft(),ar,i);
-			ar.set(i, h);
+			ar.add(h);
 			getRandomHT(h.getRight(),ar,i+1);
 		}
 		return ar;
@@ -319,10 +320,13 @@ public class EnjoyQuarantine {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void loadAccounts() throws FileNotFoundException, IOException, ClassNotFoundException{
-		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/accounts.txt"));
+	public void loadAccounts() throws FileNotFoundException, IOException, ClassNotFoundException, EOFException{
+	try {	ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/accounts.txt"));
 		accounts = (ArrayList<Account>)ois.readObject();
-		ois.close();
+		ois.close();}
+	catch(IOException e) {
+		e.printStackTrace();
+	}
 	}
 
 
@@ -341,7 +345,7 @@ public class EnjoyQuarantine {
 		}
 
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/reminders.txt"));
-		oos.writeObject(accounts);
+		oos.writeObject(reminder);
 		oos.close();
 	}
 

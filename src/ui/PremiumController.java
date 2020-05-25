@@ -85,6 +85,13 @@ public class PremiumController implements AccountsControllerInterface{
 	
 	@FXML
     void initialize() {
+		try {
+			eq = new EnjoyQuarantine();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		btadd.setVisible(false);
     }
   
