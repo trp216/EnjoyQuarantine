@@ -1,8 +1,15 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class EnjoyQuarantine {
@@ -15,10 +22,13 @@ public class EnjoyQuarantine {
 	
 	private HealthTip rootht;
 	
-	public EnjoyQuarantine() throws IOException {
+	private Reminder reminder;
+	
+	public EnjoyQuarantine() throws IOException, ClassNotFoundException {
 		accounts = new ArrayList<Account>();
 		loadInfoHealthTips();
 		loadInfoMotivationalQuotes();
+		loadAccounts();
 	}
 	
 	
@@ -57,7 +67,7 @@ public class EnjoyQuarantine {
 		this.rootmq = rootmq;
 	}
 	
-	public void addActivity(String text) {
+	public void addActivity(String text) throws FileNotFoundException {
 		Activity toAdd = new Activity();
 		toAdd.setText(text);
 		if(activities==null) {
@@ -71,6 +81,9 @@ public class EnjoyQuarantine {
 			aux.setNext(toAdd);
 			toAdd.setPrev(aux);
 		}
+		PrintWriter pw = new PrintWriter("data/activities.txt");
+		pw.println(text);
+		pw.close();
 	}
 
 	public void loadInfoHealthTips() throws IOException{
@@ -271,6 +284,7 @@ public class EnjoyQuarantine {
 		}
 	}
 	
+	//this method travels all the tree using inorder
 	public ArrayList<MotivationalQuote> getRandomMQ(MotivationalQuote m,ArrayList<MotivationalQuote> ar,int i) {
 		if(m!=null) {
 			getRandomMQ(m.getLeft(),ar,i);
@@ -280,6 +294,7 @@ public class EnjoyQuarantine {
 		return ar;
 	}
 
+	//this method travels all the tree using inorder
 	public ArrayList<HealthTip> getRandomHT(HealthTip h,ArrayList<HealthTip> ar,int i) {
 		if(h!=null) {
 			getRandomHT(h.getLeft(),ar,i);
@@ -292,5 +307,41 @@ public class EnjoyQuarantine {
 
 	public HealthTip getRootHT() {
 		return rootht;
+	}
+
+
+
+	public void saveAccounts() throws IOException {
+		File f = new File("data/accounts.txt");
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
+		oos.writeObject(accounts);
+		oos.close();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void loadAccounts() throws FileNotFoundException, IOException, ClassNotFoundException{
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/accounts.txt"));
+		accounts = (ArrayList<Account>)ois.readObject();
+		ois.close();
+	}
+
+
+
+	public void addReminder(Reminder toAdd) throws FileNotFoundException, IOException {
+		if(reminder==null) {
+			reminder = toAdd;
+		}
+		else {
+			Reminder aux = reminder;
+			while(aux.getNext()!=null) {
+				aux = aux.getNext();
+			}
+			aux.setNext(toAdd);
+			toAdd.setPrev(aux);
+		}
+
+		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data/reminders.txt"));
+		oos.writeObject(accounts);
+		oos.close();
 	}
 }

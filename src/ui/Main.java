@@ -19,7 +19,7 @@ public class Main extends Application {
 	private LoginController lc;
 	private EnjoyQuarantine enjoyquarantine;
 	
-	public Main() throws IOException {
+	public Main() throws IOException, ClassNotFoundException {
 		enjoyquarantine = new EnjoyQuarantine();
 		lc = new LoginController(enjoyquarantine);
 	}

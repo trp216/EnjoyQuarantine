@@ -1,6 +1,9 @@
 package ui;
 
 import javafx.scene.Scene;
+
+import java.io.IOException;
+
 import exceptions.MissingFieldsException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -75,7 +78,7 @@ public class AccountController {
 	    }
 	
 	@FXML
-	public void go(ActionEvent event) {
+	public void go(ActionEvent event) throws IOException {
 		try {
 			if(choicebox.getValue().equals("")) {
 				throw new MissingFieldsException();
@@ -99,6 +102,10 @@ public class AccountController {
 				else if(choicebox.getValue().equals("Insertion Sort: Username")) {
 					eq.selectionSortU();
 				}
+				else if(choicebox.getValue().equals("Save Accounts")) {
+					eq.saveAccounts();
+				}
+				
 				
 				initializeTableView();
 			}
@@ -121,6 +128,7 @@ public class AccountController {
     	choicebox.getItems().add("Selection Sort: Weight");
     	choicebox.getItems().add("Insertion Sort: Height");
     	choicebox.getItems().add("Insertion Sort: Username");
+    	choicebox.getItems().add("Save Accounts");
     	
     	initializeTableView();
     }

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.FreeController">
    <top>
@@ -28,6 +29,11 @@
               <MenuItem fx:id="motquote" mnemonicParsing="false" onAction="#getMotivationalQuote" text="Motivational Quote " />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="Reminders">
+              <items>
+                <MenuItem fx:id="addreminder" mnemonicParsing="false" onAction="#addReminder" text="AddReminder" />
+              </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>
@@ -35,6 +41,11 @@
       <TextArea fx:id="textarea" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
-      <Button fx:id="btadd" mnemonicParsing="false" onAction="#addActivities" style="-fx-background-color: #2402ff;" text="Add" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="31.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btadd" layoutX="246.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addActivities" style="-fx-background-color: #2402ff;" text="Add" />
+            <Button fx:id="btaddR" layoutX="300.0" layoutY="-2.0" mnemonicParsing="false" onAction="#addReminderB" style="-fx-background-color: #2402ff;" text="Add" />
+         </children>
+      </Pane>
    </bottom>
 </BorderPane>

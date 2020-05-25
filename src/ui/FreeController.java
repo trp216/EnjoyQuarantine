@@ -1,21 +1,29 @@
 package ui;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import exceptions.MissingFieldsException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Activity;
 import model.EnjoyQuarantine;
 import model.HealthTip;
 import model.MotivationalQuote;
+import model.Reminder;
+import thread.ReminderThread;
 
 public class FreeController implements AccountsControllerInterface{
 
@@ -35,10 +43,25 @@ public class FreeController implements AccountsControllerInterface{
     private MenuItem motquote;
     
     @FXML
+    private MenuItem addreminder;
+    
+    @FXML
     private TextArea textarea;
     
     @FXML
     private Button btadd;
+    
+    @FXML
+    private Button btaddR;
+    
+    @FXML
+    private Text t1;
+
+    @FXML
+    private TextField tfmin;
+
+    @FXML
+    private Text t2;
 
     private Scene scene;
     
@@ -112,14 +135,83 @@ public class FreeController implements AccountsControllerInterface{
 	}
 
 	@Override
-	public void addActivities(ActionEvent event) {
+	public void addActivities(ActionEvent event) throws FileNotFoundException {
 		eq.addActivity(textarea.getText());
 		textarea.setEditable(false);
+
+    	btadd.setVisible(false);
+	}
+	
+	@FXML
+	public void addReminder() {
+		textarea.setEditable(true);
+
+    	btaddR.setVisible(true);
+    	   t1.setVisible(true);
+
+           tfmin.setVisible(true);
+
+           t2.setVisible(true);
+	}
+	
+	@FXML
+	public void addReminderB() throws FileNotFoundException, IOException {
+		Reminder remind = new Reminder();
+		remind.setText(textarea.getText());
+		eq.addReminder(remind);
+		
+           
+           try {
+           if(tfmin.getText()=="") {
+        	  throw new MissingFieldsException();
+           }
+           else {
+        	   textarea.setEditable(false);
+
+        	   btaddR.setVisible(false);
+           	   t1.setVisible(false);
+
+               tfmin.setVisible(false);
+
+               t2.setVisible(false);
+        	   
+        	   ReminderThread rt = new ReminderThread(remind,this,Integer.parseInt(tfmin.getText()));
+               rt.start();
+           }
+           }
+           catch(MissingFieldsException m) {
+        	   Alert alert = new Alert(AlertType.INFORMATION);
+        	   alert.setTitle("Warning");
+        	   alert.setHeaderText("Some fields are empty!");
+        	   alert.setContentText("You have to specify the time for the reminder");
+   		
+        	   alert.showAndWait();
+           }
+           
+          
 	}
 	
 	@FXML
     void initialize() {
 		btadd.setVisible(false);
+
+    	btaddR.setVisible(false);
+    	
+        t1.setVisible(false);
+
+        tfmin.setVisible(false);
+
+        t2.setVisible(false);
     }
+
+	public void isTime(boolean already, Reminder r) {
+		if(already==true) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+		    alert.setTitle("Friendly Reminder");
+		    alert.setContentText(r.getText());
+		
+		    alert.showAndWait();
+		}
+	}
 
 }

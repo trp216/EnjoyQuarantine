@@ -4,6 +4,7 @@ import javafx.scene.Parent;
 
 import javafx.scene.Scene;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -77,7 +78,7 @@ public class PremiumController implements AccountsControllerInterface{
     }
 
 	@Override
-	public void addActivities(ActionEvent event) {
+	public void addActivities(ActionEvent event) throws FileNotFoundException {
 		eq.addActivity(textarea.getText());
 		textarea.setEditable(false);
 	}
