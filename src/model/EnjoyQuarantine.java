@@ -344,4 +344,45 @@ public class EnjoyQuarantine {
 		oos.writeObject(accounts);
 		oos.close();
 	}
+
+
+	//using binary search
+	public boolean searchAccountName(String name) {
+		boolean found = false;
+		int start = 0;
+		int end = accounts.size()-1;
+		while(start<=end && !found) {
+			int middle = (start+end)/2;
+			if(accounts.get(middle).getName().equals(name)) {
+				found = true;
+			}
+			else if(accounts.get(middle).getName().compareTo(name)>0) {
+				end = middle-1;
+			}
+			else {
+				start = middle+1;
+			}
+		}
+		return found;
+	}
+	
+	//using binary search
+		public boolean searchAccountUsername(String username) {
+			boolean found = false;
+			int start = 0;
+			int end = accounts.size()-1;
+			while(start<=end && !found) {
+				int middle = (start+end)/2;
+				if(accounts.get(middle).getUsername().equals(username)) {
+					found = true;
+				}
+				else if(accounts.get(middle).getUsername().compareTo(username)>0) {
+					end = middle-1;
+				}
+				else {
+					start = middle+1;
+				}
+			}
+			return found;
+		}
 }

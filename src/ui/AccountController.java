@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Account;
@@ -50,6 +51,12 @@ public class AccountController {
     
     @FXML
     private Button go;
+    
+    @FXML
+    private TextField searched;
+
+    @FXML
+    private Button searchbt;
 	
 	private Scene scene;
 	
@@ -102,6 +109,19 @@ public class AccountController {
 				else if(choicebox.getValue().equals("Insertion Sort: Username")) {
 					eq.selectionSortU();
 				}
+				
+				else if(choicebox.getValue().equals("Search account by name")) {
+					searched.setVisible(true);
+					searchbt.setVisible(true);
+					searchBT();
+				}
+				
+				else if(choicebox.getValue().equals("Search account by username")) {
+					searched.setVisible(true);
+					searchbt.setVisible(true);
+					searchBT();
+				}
+				
 				else if(choicebox.getValue().equals("Save Accounts")) {
 					eq.saveAccounts();
 				}
@@ -120,14 +140,68 @@ public class AccountController {
 		}
 	}
 	
+	@FXML
+	public void searchBT() {
+		String s = searched.getText();
+		try {
+			if(s.equals("")) {
+				throw new MissingFieldsException();
+			}
+			else {
+				if(choicebox.getValue().equals("Search account by name")) {
+					
+					accountFound(eq.searchAccountName(s));
+				}
+				
+				else if(choicebox.getValue().equals("Search account by username")) {
+					accountFound(eq.searchAccountUsername(s));
+				}
+				
+				searched.setVisible(false);
+				searchbt.setVisible(false);
+			}
+		}
+		catch(MissingFieldsException m) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+		    alert.setTitle("Warning");
+		    alert.setHeaderText("Some fields are empty!");
+		    alert.setContentText("This is a friendly reminder for you to fill all fields :D");
+		
+		    alert.showAndWait();
+		}
+	}
+	
+	public void accountFound(boolean found) {
+		if(found==true) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+		    alert.setTitle("Search complete");
+		    alert.setContentText("The search user exists in the database");
+		
+		    alert.showAndWait();
+		}
+		else {
+			Alert alert = new Alert(AlertType.INFORMATION);		   
+			alert.setTitle("Search complete");
+		    alert.setContentText("The search user doesn't exist in the database");
+		
+		    alert.showAndWait();
+		}
+	}
+	
     @FXML
     void initialize() {
+    	
+    	searched.setVisible(false);
+		searchbt.setVisible(false);
+		
     	choicebox.getItems().add("Bubble Sort: Name");
     	choicebox.getItems().add("Bubble Sort: Height");
     	choicebox.getItems().add("Selection Sort: Username");
     	choicebox.getItems().add("Selection Sort: Weight");
     	choicebox.getItems().add("Insertion Sort: Height");
     	choicebox.getItems().add("Insertion Sort: Username");
+    	choicebox.getItems().add("Search account by name");
+    	choicebox.getItems().add("Search account by username");
     	choicebox.getItems().add("Save Accounts");
     	
     	initializeTableView();
