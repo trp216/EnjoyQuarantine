@@ -26,10 +26,9 @@ public class EnjoyQuarantine {
 	private Reminder reminder;
 	
 	public EnjoyQuarantine() throws IOException, ClassNotFoundException {
-		accounts = new ArrayList<Account>();
 		loadInfoHealthTips();
 		loadInfoMotivationalQuotes();
-		//loadAccounts();
+		loadAccounts();
 	}
 	
 	
@@ -313,20 +312,29 @@ public class EnjoyQuarantine {
 
 
 	public void saveAccounts() throws IOException {
-		File f = new File("data/accounts.txt");
+		File f = new File("data/accounts.mateo");
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 		oos.writeObject(accounts);
 		oos.close();
 	}
 	
+	
 	@SuppressWarnings("unchecked")
-	public void loadAccounts() throws FileNotFoundException, IOException, ClassNotFoundException, EOFException{
-	try {	ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data/accounts.txt"));
-		accounts = (ArrayList<Account>)ois.readObject();
-		ois.close();}
-	catch(IOException e) {
-		e.printStackTrace();
-	}
+	public void loadAccounts(){
+		File f  = new File("data/accounts.mateo");
+		if(f.exists()) {
+			try {
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+				accounts = (ArrayList<Account>)ois.readObject();
+				ois.close();
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else {
+			accounts = new ArrayList<Account>();
+		}
 	}
 
 
