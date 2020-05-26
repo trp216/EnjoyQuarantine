@@ -25,13 +25,20 @@ public class EnjoyQuarantine {
 	
 	private Reminder reminder;
 	
-	public EnjoyQuarantine() throws IOException, ClassNotFoundException {
+	public EnjoyQuarantine() {
+		try {
+			load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void load() throws IOException {
 		loadInfoHealthTips();
 		loadInfoMotivationalQuotes();
 		loadAccounts();
 	}
-	
-	
 
 	public ArrayList<Account> getAccounts() {
 		return accounts;
@@ -151,6 +158,7 @@ public class EnjoyQuarantine {
 		else {
 			accounts.add(new FreeAccount(username, name, password, birthdate, gender, height, weight));
 		}
+		System.out.println("Added");
 	}
 	
 	

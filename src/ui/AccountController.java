@@ -68,11 +68,16 @@ public class AccountController {
 
 	public void getEQ(EnjoyQuarantine eq) {
 		this.eq = eq;
+		initializeTableView();
 	}
+	
 	
 	 private void initializeTableView() {
 		    
+		 	
+
 	    	ObservableList<Account> observableList = FXCollections.observableArrayList(eq.getAccounts());
+	    	
 	    	table.setItems(observableList);
 	    	
 	    	column1.setCellValueFactory(new PropertyValueFactory<Account,String>("username")); 
@@ -204,6 +209,6 @@ public class AccountController {
     	choicebox.getItems().add("Search account by username");
     	choicebox.getItems().add("Save Accounts");
     	
-    	initializeTableView();
+
     }
 }

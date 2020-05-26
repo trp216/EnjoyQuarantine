@@ -61,21 +61,24 @@ public class LoginController {
     
     private EnjoyQuarantine enjoyquarantine;
 
-    public void getEq(EnjoyQuarantine enjoyquarantine) {
-		this.enjoyquarantine = enjoyquarantine;
-	}
+
+    
+    public LoginController() {
+    	
+    	
+    }
     
     @FXML
     public void signUp(MouseEvent event){
     	try {
-    		rc = new RegisterController();
-    		rc.getEQ(enjoyquarantine);
-    		rc.getFP(fc, pc);
+    		
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Register.fxml"));
 			Parent root = fxmlLoader.load();
 			Stage stage = new Stage();
 			Scene scene = new Scene(root);
 			rc = fxmlLoader.getController();
+			rc.getEQ(enjoyquarantine);
+    		rc.getFP(fc, pc);
 			rc.setScene(scene);
 			stage.setScene(scene);
 			stage.show();
@@ -90,14 +93,13 @@ public class LoginController {
     public void signIn(ActionEvent event) {
     	if(free.isSelected()) {
     		try {
-    			fc = new FreeController();
-    			fc.getEQ(enjoyquarantine);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Free.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();
     			Scene scene = new Scene(root);
     			fc = fxmlLoader.getController();
     			fc.setScene(scene);
+    			fc.getEQ(enjoyquarantine);
     			stage.setScene(scene);
     			stage.show();
     		}
@@ -107,14 +109,13 @@ public class LoginController {
     	}
     	else if(premium.isSelected()) {
     		try {
-    			pc = new PremiumController();
-    			pc.getEQ(enjoyquarantine);
     			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Premium.fxml"));
     			Parent root = fxmlLoader.load();
     			Stage stage = new Stage();
     			Scene scene = new Scene(root);
     			pc = fxmlLoader.getController();
     			pc.setScene(scene);
+    			pc.getEQ(enjoyquarantine);
     			stage.setScene(scene);
     			stage.show();
     		}
@@ -146,6 +147,7 @@ public class LoginController {
 
 	@FXML
     void initialize() {
+		enjoyquarantine = new EnjoyQuarantine();
 		testPlay();
     }
 }

@@ -17,17 +17,23 @@ public class Main extends Application {
 	//Thanks
 	
 	private LoginController lc;
-	private EnjoyQuarantine enjoyquarantine;
+	//private EnjoyQuarantine enjoyquarantine;
 	
-	public Main() throws IOException, ClassNotFoundException {
-		enjoyquarantine = new EnjoyQuarantine();
+	public Main() {
+//		enjoyquarantine = new EnjoyQuarantine();
+//		try {
+//			enjoyquarantine.load();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		lc = new LoginController();
-		lc.getEq(enjoyquarantine);
+		//lc.getEq(enjoyquarantine);
 	}
 
 	@Override
 	public void start(Stage arg0) throws Exception {
-		Main main = new Main();
+		//Main main = new Main();
 		
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login.fxml"));
 		

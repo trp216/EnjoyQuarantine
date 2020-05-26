@@ -69,9 +69,10 @@ public class FreeController implements AccountsControllerInterface{
 
     private EnjoyQuarantine eq;
 	
-	public void getEQ(EnjoyQuarantine eq) {
-		this.eq = eq;
+	public void getEQ(EnjoyQuarantine enqu) {
+		this.eq = enqu;
 	}
+    
     
     @FXML
     void addActivity(ActionEvent event) {
@@ -83,7 +84,7 @@ public class FreeController implements AccountsControllerInterface{
     public void getHealthTip(ActionEvent event) {
     	ArrayList<HealthTip> ar = new ArrayList<HealthTip>();
     	ar = eq.getRandomHT(eq.getRootHT(), ar, 0);
-    	int random = (int)(Math.random() * ar.size() + 1);
+    	int random = (int)(Math.random() * ar.size());
     	textarea.setText(ar.get(random).getText());
     }
 
@@ -91,7 +92,7 @@ public class FreeController implements AccountsControllerInterface{
     public void getMotivationalQuote(ActionEvent event) {
     	ArrayList<MotivationalQuote> ar = new ArrayList<MotivationalQuote>();
     	ar = eq.getRandomMQ(eq.getRootmq(), ar, 0);
-    	int random = (int)(Math.random() * ar.size() + 1);
+    	int random = (int)(Math.random() * ar.size());
     	textarea.setText(ar.get(random).getText());
     }
 
@@ -114,14 +115,15 @@ public class FreeController implements AccountsControllerInterface{
     @FXML
     public void seeOtherAccounts(ActionEvent event) {
     	 try {
-    		ac = new AccountController();
-    		ac.getEQ(eq);
+    		
  			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Accounts.fxml"));
  			Parent root = fxmlLoader.load();
  			Stage stage = new Stage();
  			Scene scene = new Scene(root);
  			ac = fxmlLoader.getController();
+ 			ac.getEQ(eq);
  			ac.setScene(scene);
+ 			
  			stage.setScene(scene);
  			stage.show();
      }
@@ -194,12 +196,6 @@ public class FreeController implements AccountsControllerInterface{
 	
 	@FXML
     void initialize() {
-		try {
-			eq = new EnjoyQuarantine();
-		} catch (ClassNotFoundException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		btadd.setVisible(false);
 
