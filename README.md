@@ -9,6 +9,14 @@ Because of this, everyone who possess a free account can enter and save differen
 to take care of your health, put reminders, see the general information of other users, listen music while using 
 the application and read the motivational quote of the day. People who possess a premium account has a clock too.
 
+## **Stages of the project**
+### **Analysis**
+https://github.com/trp216/EnjoyQuarantine-/blob/master/Entrega%201_An%C3%A1lisis/DIAZ_ALEJANDRA%20_ENTREGA_1.pdf
+### **Design**
+https://github.com/trp216/EnjoyQuarantine-/tree/master/Entrega%202%20_Dise%C3%B1o
+https://github.com/trp216/EnjoyQuarantine-/tree/master/Entrega%203_Implementaci%C3%B3n_Documentaci%C3%B3n/docs
+### **Presentation**
+To watch the presentation on YouTube [click here.](https://youtu.be/veCdCKh-gE4)
 
 ## **How To Use The Program**
 
